@@ -44,9 +44,6 @@ public class GetFlickrJSONData extends GetRawData {
     protected void onPostExecute(String rawData) {
         super.onPostExecute(rawData);
         processJSON();
-        for(FlickrPhotoModel photo : photoList) {
-            Log.i(LOG_TAG, photo.toString());
-        }
     }
 
     private boolean buildFlickrURI(boolean matchAllTags, String searchQuery) {

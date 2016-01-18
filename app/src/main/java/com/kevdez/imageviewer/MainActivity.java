@@ -2,11 +2,22 @@ package com.kevdez.imageviewer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = "MainActivity";
+    private List<FlickrPhotoModel> photosList = new ArrayList<FlickrPhotoModel>();
+    private RecyclerView recyclerView;
+    private FlickrPhotoViewAdapter flickrViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ProcessImages processImages = new ProcessImages(true, "nature");
+        processImages.execute();
         GetFlickrJSONData flickrData = new GetFlickrJSONData(true, "");
         flickrData.execute();
 
@@ -37,8 +53,24 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_refresh) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class ProcessImages extends GetFlickrJSONData {
+
+        public ProcessImages(boolean matchAllTags, String searchQuery) {
+            super(matchAllTags, searchQuery);
+        }
+
+        @Override
+        protected void onPostExecute(String rawData) {
+            super.onPostExecute(rawData);
+            flickrViewAdapter = new FlickrPhotoViewAdapter(MainActivity.this, getPhotoList());
+            recyclerView.setAdapter(flickrViewAdapter);
+        }
     }
 }
