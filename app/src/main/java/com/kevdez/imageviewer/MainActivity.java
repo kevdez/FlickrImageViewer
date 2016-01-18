@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        GetFlickrJSONData getRawData = new GetFlickrJSONData(true, "dog");
-        getRawData.execute();
+        GetFlickrJSONData flickrData = new GetFlickrJSONData(true, "");
+        flickrData.execute();
+
     }
 
     @Override

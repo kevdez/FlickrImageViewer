@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// URL https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1
 public class GetRawData extends AsyncTask<String, Void, String> {
 
     private final String LOG_TAG = GetRawData.class.getSimpleName();

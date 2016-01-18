@@ -19,17 +19,20 @@ public class GetFlickrJSONData extends GetRawData {
     private Uri uri;
 
     private final String baseURL = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1";
+
     private final String TAGS_PARAM = "tags";
     private final String TAG_MODE_PARAM = "tagmode";
     private final String FORMAT_PARAM = "format";
-//    private final String LANG_PARAM = "lang";
+    //    private final String LANG_PARAM = "lang";
     private final String NO_JSON_CALLBACK_PARAM = "nojsoncallback";
-
     public GetFlickrJSONData(boolean matchAllTags, String searchQuery) {
         super();
         photoList = new ArrayList<FlickrPhotoModel>();
         buildFlickrURI(matchAllTags, searchQuery);
+    }
 
+    public List<FlickrPhotoModel> getPhotoList() {
+        return photoList;
     }
 
     @Override
