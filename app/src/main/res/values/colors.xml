@@ -8,5 +8,5 @@
     <color name="customPrimaryTextColor">@color/md_white_1000</color>
     <color name="customSecondaryTextColor">@color/md_white_1000</color>
 
-    <color name="customBackgroundColor">@color/md_amber_100</color>
+    <color name="customBackgroundColor">@color/md_grey_50</color>
 </resources>
