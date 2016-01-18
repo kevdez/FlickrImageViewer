@@ -39,6 +39,15 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        <activity
+            android:name=".ViewPhotoActivity"
+            android:label="@string/title_activity_view_photo"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Custom">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kevdez.imageviewer.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

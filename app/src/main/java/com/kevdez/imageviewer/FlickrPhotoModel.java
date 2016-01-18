@@ -1,9 +1,11 @@
 package com.kevdez.imageviewer;
 
-/**
- * Created by Kevin on 1/17/2016.
- */
-public class FlickrPhotoModel {
+import java.io.Serializable;
+
+public class FlickrPhotoModel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String Title;
     private String ImageUrl;
     private String Author;
@@ -16,6 +18,10 @@ public class FlickrPhotoModel {
         Author = author;
         AuthorId = authorId;
         Tags = tags;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getTitle() {

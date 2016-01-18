@@ -41,4 +41,8 @@ public class FlickrPhotoViewAdapter extends RecyclerView.Adapter<FlickrPhotoView
     public int getItemCount() {
         return (photoModels != null) ? photoModels.size() : 0;
     }
+
+    public FlickrPhotoModel getPhoto(int position) {
+        return (photoModels != null) ? photoModels.get(position) : null;
+    }
 }

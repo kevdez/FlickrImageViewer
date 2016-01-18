@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 public class BaseActivity extends AppCompatActivity {
     private Toolbar toolbar;
     public static final String QUERY = "QUERY";
+    public static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";
 
     protected Toolbar activateToolbar() {
         if(toolbar == null) {
