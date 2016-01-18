@@ -1,6 +1,9 @@
 package com.kevdez.imageviewer;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -47,13 +50,37 @@ public class MainActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.action_refresh) {
+        }
+        if (id == R.id.action_refresh) {
             ProcessImages processImages = new ProcessImages(true, "");
             processImages.execute();
+            return true;
+
+        }
+        if (id == R.id.menu_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(flickrViewAdapter != null) {
+            String query = getSavedPreferences(QUERY);
+            if(query.length() > 0) {
+                ProcessImages processImages = new ProcessImages(true,query);
+                processImages.execute();
+            }
+        }
+    }
+
+    private String getSavedPreferences(String key) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return sharedPreferences.getString(key, "");
     }
 
     public class ProcessImages extends GetFlickrJSONData {

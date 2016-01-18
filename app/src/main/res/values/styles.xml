@@ -1,8 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -18,7 +17,7 @@
         <item name="android:windowBackground">@color/customBackgroundColor</item>
     </style>
 
-    <style name="Theme.Custom" parent="Theme.Base"/>
+    <style name="Theme.Custom" parent="Theme.Base" />
 
     <style name="ActionBarThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/customPrimaryTextColor</item>
@@ -36,5 +35,9 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Custom.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Custom.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
